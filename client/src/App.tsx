@@ -23,6 +23,7 @@ import {
   DeleteOutlined,
 } from "@ant-design/icons";
 import JobFormModal from "./components/JobFormModal";
+import { API_ENDPOINTS } from "./config/api";
 
 const { Header, Footer, Content } = Layout;
 const { Title, Paragraph, Text } = Typography;
@@ -90,7 +91,7 @@ const App = () => {
     if (!jobId) return;
 
     try {
-      const response = await fetch(`http://localhost:3001/jobs/${jobId}`, {
+      const response = await fetch(`${API_ENDPOINTS.JOBS}/${jobId}`, {
         method: "DELETE",
       });
 
@@ -124,7 +125,7 @@ const App = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch("http://localhost:3001/jobs");
+        const response = await fetch(API_ENDPOINTS.JOBS);
         const data = await response.json();
         setJobs(data);
         setLoading(false);
