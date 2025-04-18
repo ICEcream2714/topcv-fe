@@ -37,7 +37,7 @@ interface Job {
   applicationButton: string;
   deadline: string;
 }
-
+// other change
 const App = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
