@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Modal, Form, Input, DatePicker, message } from "antd";
 import dayjs from "dayjs";
+import { API_ENDPOINTS } from "../config/api";
 
 const { TextArea } = Input;
 
@@ -57,7 +58,7 @@ const JobFormModal: React.FC<JobFormModalProps> = ({
 
       if (isEditing && job?.id) {
         // Cập nhật job nếu đang ở chế độ edit
-        const response = await fetch(`jobs/${job.id}`, {
+        const response = await fetch(`${API_ENDPOINTS.JOBS}/${job.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -75,7 +76,7 @@ const JobFormModal: React.FC<JobFormModalProps> = ({
         }
       } else {
         // Thêm job mới nếu không phải chế độ edit
-        const response = await fetch("http://localhost:3001/jobs", {
+        const response = await fetch(`${API_ENDPOINTS.JOBS}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
