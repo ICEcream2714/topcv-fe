@@ -57,7 +57,7 @@ const JobFormModal: React.FC<JobFormModalProps> = ({
 
       if (isEditing && job?.id) {
         // Cập nhật job nếu đang ở chế độ edit
-        const response = await fetch(`http://localhost:3001/jobs/${job.id}`, {
+        const response = await fetch(`jobs/${job.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
