@@ -94,6 +94,8 @@ const App = () => {
         method: "DELETE",
       });
 
+      console.log("response", response);
+
       if (response.ok) {
         message.success("Công việc đã được xóa thành công!");
         setJobs((prevJobs) => prevJobs.filter((job) => job.id !== jobId));
