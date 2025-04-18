@@ -39,6 +39,7 @@ interface Job {
 }
 // change
 
+// other change
 const App = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
