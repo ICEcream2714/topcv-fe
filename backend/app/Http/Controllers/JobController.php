@@ -20,6 +20,8 @@ class JobController extends Controller
      * Store a newly created resource in storage.
      * this function is used to create a new job
      */
+
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([

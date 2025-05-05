@@ -196,13 +196,21 @@ const App = () => {
           }}
         >
           <h1 className="header-title">Ứng dụng CRUD Job đơn giản</h1>
-          <Button
-            type="primary"
-            icon={<PlusOutlined />}
-            onClick={handleCreateJob}
-          >
-            Thêm công việc mới
-          </Button>
+          <Space>
+            <Button
+              type="primary"
+              icon={<PlusOutlined />}
+              onClick={handleCreateJob}
+            >
+              Thêm công việc mới
+            </Button>
+            <Button type="default" onClick={() => navigate("/login")}>
+              Đăng nhập
+            </Button>
+            <Button type="primary" onClick={() => navigate("/register")}>
+              Đăng ký
+            </Button>
+          </Space>
         </Header>
         <Content style={{ padding: "0 48px" }}>
           <div
