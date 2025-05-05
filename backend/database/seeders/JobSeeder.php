@@ -1,0 +1,62 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use App\Models\Job;
+
+class JobSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $jobs = [
+            [
+                'id' => 1,
+                'positionName' => 'Software Engineer',
+                'companyName' => 'Tech Solutions Inc.',
+                'companyLocation' => 'New York, NY',
+                'description' => 'Develop and maintain web applications using modern technologies.',
+                'deadline' => '2023-12-31',
+            ],
+            [
+                'id' => 2,
+                'positionName' => 'Product Manager',
+                'companyName' => 'Innovate Corp.',
+                'companyLocation' => 'San Francisco, CA',
+                'description' => 'Lead product development and strategy for new features.',
+                'deadline' => '2024-01-15',
+            ],
+            [
+                'id' => 3,
+                'positionName' => 'UX Designer',
+                'companyName' => 'Creative Agency',
+                'companyLocation' => 'Austin, TX',
+                'description' => 'Design user-friendly interfaces and improve user experience.',
+                'deadline' => '2024-02-01',
+            ],
+            [
+                'id' => 4,
+                'positionName' => 'Data Analyst',
+                'companyName' => 'Data Insights LLC',
+                'companyLocation' => 'Chicago, IL',
+                'description' => 'Analyze data trends and provide actionable insights.',
+                'deadline' => '2024-01-20',
+            ],
+            [
+                'id' => 5,
+                'positionName' => 'Marketing Specialist',
+                'companyName' => 'Market Leaders',
+                'companyLocation' => 'Los Angeles, CA',
+                'description' => 'Develop and implement marketing strategies to increase brand awareness.',
+                'deadline' => '2024-01-30',
+            ],
+        ];
+        foreach ($jobs as $job) {
+            Job::updateOrCreate(['id' => $job['id']], $job);
+        }
+    }
+}

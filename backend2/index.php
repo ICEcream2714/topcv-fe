@@ -181,15 +181,18 @@ try {
     <form id="registerForm" method="post" action="" onsubmit="return validateForm()">
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required>
+        <div id="emailError" class="error"></div>
       </div>
       <div class="form-group">
         <label for="password">Mật khẩu:</label>
         <input type="password" id="password" name="password" required>
+        <div id="passwordError" class="error"></div>
       </div>
       <div class="form-group">
         <label for="confirmPassword">Xác nhận mật khẩu:</label>
         <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <div id="confirmPasswordError" class="error"></div>
       </div>
       <div class="form-group">
         <button type="submit" class="submit-btn">Đăng ký</button>

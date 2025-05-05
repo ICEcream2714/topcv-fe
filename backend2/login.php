@@ -12,9 +12,9 @@ $errorMsg = '';
 $successMsg = '';
 $email = '';
 
-// Nếu người dùng đã đăng nhập, chuyển hướng đến trang dashboard hoặc trang chính
+// Nếu người dùng đã đăng nhập, chuyển hướng đến trang dashboard
 if (isset($_SESSION['user_id'])) {
-  // Bạn có thể thay đổi URL này thành trang dashboard của bạn
+  // Bạn có thể thay đổi URL này thành trang dashboard
   header('Location: dashboard.php');
   exit;
 }
@@ -48,9 +48,8 @@ try {
           $_SESSION['user_id'] = $user['id'];
           $_SESSION['user_email'] = $user['email'];
 
-          // Chuyển hướng đến trang dashboard hoặc trang chính
+          // Chuyển hướng đến trang dashboard
           $successMsg = "Đăng nhập thành công! Đang chuyển hướng...";
-          // Sau 2 giây sẽ chuyển hướng
           echo '<meta http-equiv="refresh" content="0;url=dashboard.php">';
         } else {
           // Đăng nhập thất bại

@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 
 try {
-  $pdo = new PDO('mysql:dbname=job_db;host=mysql', 'user', '123456', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+  $pdo = new PDO('mysql:dbname=3307;host=mysql', 'root', 'root', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
   echo 'Kết nối thành công!<br>';
 } catch (PDOException $e) {
     echo 'Kết nối thất bại: ' . $e->getMessage();

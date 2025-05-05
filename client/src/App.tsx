@@ -125,12 +125,59 @@ const App = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
+        console.log("Đang gọi API tại:", API_ENDPOINTS.JOBS);
         const response = await fetch(API_ENDPOINTS.JOBS);
+        console.log("Kết quả phản hồi:", response);
+
+        if (!response.ok) {
+          console.error(
+            "API trả về lỗi:",
+            response.status,
+            response.statusText
+          );
+          throw new Error(
+            `API error: ${response.status} - ${response.statusText}`
+          );
+        }
+
         const data = await response.json();
-        setJobs(data);
-        setLoading(false);
+        console.log("Dữ liệu nhận được:", data);
+        console.log(
+          "Kiểu dữ liệu:",
+          Array.isArray(data) ? "Array" : typeof data
+        );
+
+        if (Array.isArray(data)) {
+          if (data.length > 0) {
+            console.log("Mẫu dữ liệu đầu tiên:", data[0]);
+            setJobs(data);
+          } else {
+            console.log("API trả về mảng rỗng - không có dữ liệu jobs");
+            setJobs([]);
+          }
+        } else {
+          console.error("Dữ liệu không phải là mảng như mong đợi");
+          // Nếu API trả về object thay vì array, thử kiểm tra xem có thuộc tính data không
+          if (
+            data &&
+            typeof data === "object" &&
+            "data" in data &&
+            Array.isArray(data.data)
+          ) {
+            console.log(
+              "Đang sử dụng data.data do API có thể trả về định dạng {data: [...]}"
+            );
+            setJobs(data.data);
+          } else {
+            setJobs([]);
+          }
+        }
       } catch (error) {
-        console.error("Error fetching jobs:", error);
+        console.error("Lỗi chi tiết khi fetch jobs:", error);
+        message.error(
+          "Không thể tải dữ liệu từ API. Vui lòng kiểm tra console."
+        );
+      } finally {
         setLoading(false);
       }
     };
